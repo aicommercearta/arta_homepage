@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* ── Brand Tokens ─────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --background-rgb: 255, 255, 255;
+  --foreground: #09090b;
+
+  /* Text Colors */
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+
+  /* Surface Colors */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f9fafb;
+  --surface-elevated: rgba(255, 255, 255, 0.9);
+
+  --card-bg: rgba(255, 255, 255, 0.4);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --glass-sheen: rgba(255, 255, 255, 0.5);
+
+  --brand-indigo: #6D86FD;
+  --brand-magenta: #CC4FC7;
+  --brand-peach: #F98976;
+
+  --brand-gradient: linear-gradient(90deg, var(--brand-indigo), var(--brand-magenta), var(--brand-peach));
+
+  --orb-opacity: 0.15;
+}
+
+.dark {
+  --background: #000000;
+  --background-rgb: 0, 0, 0;
+  --foreground: #ffffff;
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  /* Surface Colors */
+  --surface-primary: #121212;
+  --surface-secondary: #0a0a0a;
+  --surface-elevated: rgba(30, 30, 30, 0.9);
+
+  --card-bg: rgba(30, 30, 30, 0.6);
+  --card-border: rgba(255, 255, 255, 0.15);
+  --glass-sheen: rgba(255, 255, 255, 0.15);
+
+  /* Vibrant Brand Colors for Dark Mode */
+  --brand-indigo: #8b9dff;
+  --brand-magenta: #e56de5;
+  --brand-peach: #ff9d8a;
+
+  --orb-opacity: 0.25;
+}
+
+/* ── Theme ────────────────────────────────────────── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Semantic Text Colors - Auto-adapting */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  /* Brand Colors */
+  --color-brand-indigo: var(--brand-indigo);
+  --color-brand-magenta: var(--brand-magenta);
+  --color-brand-peach: var(--brand-peach);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-parkinsans);
+
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 20s linear infinite;
+  --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+
+  @keyframes float-slow {
+
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+
+    50% {
+      transform: translateY(-30px) scale(1.04);
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes pulse-slow {
+
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
+
+/* ── Global Styles ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ── Brand Typography ──────────────────────────────────── */
+/* ARTA Main Header font = Parkinsans */
+/* .font-outfit kept as alias so existing class names still work */
+.font-parkinsans,
+.font-outfit,
+.font-display {
+  font-family: 'Parkinsans', var(--font-inter), Arial, sans-serif;
+}
+
+/* ── Skeuomorphic Utilities ────────────────────────── */
+.skeuo-shadow {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dark .skeuo-shadow {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-indigo);
+  border-radius: 99px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-magenta);
+}
+
+/* ── Typography Utilities ────────────────────────── */
+.text-brand-gradient {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Custom Animations ─────────────────────────────── */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.svg-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease forwards;
+}
