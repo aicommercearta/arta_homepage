@@ -10,7 +10,7 @@ const navLinks = [
     { label: "Dropship", href: "/dropship" },
     { label: "Brands 360", href: "/brands-360" },
     { label: "AI Tools", href: "/ai-tools" },
-    { label: "Building", href: "/#infra" },
+    { label: "Brands by Arta", href: "/brands-walkthrough" },
 ];
 
 export default function Navbar() {

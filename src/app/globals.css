@@ -170,6 +170,21 @@ body {
   background: var(--brand-magenta);
 }
 
+/* Hide scrollbar entirely inside the case-study modal */
+.case-study-modal {
+  scrollbar-width: none;            /* Firefox */
+  -ms-overflow-style: none;          /* IE/Edge */
+}
+.case-study-modal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+.case-study-modal::-webkit-scrollbar-thumb,
+.case-study-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* ── Typography Utilities ────────────────────────── */
 .text-brand-gradient {
   background: var(--brand-gradient);

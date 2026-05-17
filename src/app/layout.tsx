@@ -35,6 +35,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet" />
+        {/* Per-brand display fonts used on /brands-walkthrough overlays */}
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Sans:wght@400;500;700&family=Poppins:wght@300;400;600&family=Outfit:wght@300;400;500&family=DM+Sans:wght@400;500&family=Caveat:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
       </head>
       <body className={`${inter.variable} ${parkinsans.variable} font-sans antialiased bg-stone-50 dark:bg-[#0a0a0c] text-stone-900 dark:text-stone-50 selection:bg-indigo-500/30`}>
         <ThemeProvider>
