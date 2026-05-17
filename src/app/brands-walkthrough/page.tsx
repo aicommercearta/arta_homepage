@@ -454,12 +454,19 @@ export default function BrandsWalkthroughPage() {
                     <button
                       type="button"
                       onClick={() => setOpenCaseStudy(scene.brand)}
-                      className="pointer-events-auto mt-1 inline-flex items-center gap-2 rounded-full border px-5 py-2 text-xs uppercase tracking-[0.2em] transition hover:scale-[1.02] active:scale-[0.98]"
+                      // Only clickable when this brand's overlay is visible.
+                      // Without this guard, a faded-out (opacity 0) overlay
+                      // from a different brand could intercept the click.
+                      disabled={opacity < 0.5}
+                      aria-hidden={opacity < 0.5}
+                      tabIndex={opacity < 0.5 ? -1 : 0}
+                      className="mt-1 inline-flex items-center gap-2 rounded-full border px-5 py-2 text-xs uppercase tracking-[0.2em] transition hover:scale-[1.02] active:scale-[0.98]"
                       style={{
                         borderColor: scene.accent,
                         color: scene.textColor,
                         backgroundColor: "rgba(255,255,255,0.65)",
                         backdropFilter: "blur(8px)",
+                        pointerEvents: opacity > 0.5 ? "auto" : "none",
                       }}
                     >
                       Read case study
